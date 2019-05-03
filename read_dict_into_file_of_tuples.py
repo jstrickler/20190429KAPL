@@ -1,26 +1,38 @@
 #!/usr/bin/env python
 from pprint import pprint
 
-knight_data = {}    #   {'Bob': (.....), "Fred": (......)}
+FILE_NAME = 'DATA/knights.txt'
 
-with open('DATA/knights.txt') as knights_in:
-    for raw_line in knights_in:
-        name, title, color, quest, comment = raw_line.rstrip().split(':')
-        knight_data[name] = (title, color, quest, comment)
+def main():
+    knight_data = read_data(FILE_NAME)
+    pretty_print(knight_data)
+    print()
+    index_demo(knight_data, 'Galahad')
+    print()
+    print_title_and_name(knight_data)
 
-pprint(knight_data)
-print()
-print(knight_data['Galahad'])
-print(knight_data['Galahad'][0])
-print(knight_data['Galahad'][0][0])
+def read_data(file_name):
+    data = {}    #   {'Bob': (.....), "Fred": (......)}
 
-#     KEY         VALUE   in   DICT.items()
-#    str,        tuple    in ....
-for knight_name, knight_info in knight_data.items():
-    print(f"{knight_info[0]} {knight_name}")
-print('-' * 60)
+    with open(file_name) as knights_in:
+        for raw_line in knights_in:
+            name, title, color, quest, comment = raw_line.rstrip().split(':')
+            data[name] = (title, color, quest, comment)
 
-#      key, (value1, ...)
-for knight_name, (k_title, k_color, k_quest, k_comment) in knight_data.items():
-    print(f"{k_title} {knight_name}")
+    return data
 
+def pretty_print(data):
+    pprint(data)
+    print()
+
+def index_demo(data, knight_name):
+    print(data[knight_name])
+    print(data[knight_name][0])
+    print(data[knight_name][0][0])
+
+def print_title_and_name(data):
+    for knight_name, knight_info in data.items():
+        print(f"{knight_info[0]} {knight_name}")
+
+if __name__ == '__main__':
+    main()
