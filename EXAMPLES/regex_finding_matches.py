@@ -19,11 +19,21 @@ print()
 m = re.search(pattern, s)  # <3>
 print(m)
 if m:
-    print("Found:", m.group(0))  # <4>
+    print("Found:", m.group(), m.start(), m.end(), m.span())  # <4>
 print()
 
+# re.match(^...) # match beg. of string or line re.fullmatch(^...$)  # match string or line
+
+#  x = "28938"
+#  re.fullmatch(r'\d+', x)
+#  re.search(r'^\d+$', x)
+
+#  "DL2344"   "N1234"
+#  re.fullmatch(r'
+
+
 for m in re.finditer(pattern, s):  # <5>
-    print(m.group())
+    print(m.group(), m.start())
 print()
 
 matches = re.findall(pattern, s)  # <6>

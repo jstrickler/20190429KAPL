@@ -103,5 +103,6 @@ fruits.sort(key=str.lower)
 
 print(fruits)
 
+print("\U0001F92F")
 
 
