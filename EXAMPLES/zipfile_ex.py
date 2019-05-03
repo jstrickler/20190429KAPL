@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import shutil
 from zipfile import ZipFile, ZIP_DEFLATED
 import os.path
 
@@ -11,8 +11,12 @@ print(ty[:50])
 rzip.extract('parrot.txt')  # <4>
 
 # creating a zip file
-wzip = ZipFile("example.zip", mode="w", compression=ZIP_DEFLATED)  # <5>
-for base in "parrot tyger knights alice poe_sonnet spam".split():
-    filename = os.path.join("../DATA", base + '.txt')
-    print("adding {} as {}".format(filename, base + '.txt'))
-    wzip.write(filename, base + '.txt')  # <6>
+# wzip = ZipFile("example.zip", mode="w", compression=ZIP_DEFLATED)  # <5>
+# for base in "parrot tyger knights alice poe_sonnet spam".split():
+#     filename = os.path.join("../DATA", base + '.txt')
+#     print("adding {} as {}".format(filename, base + '.txt'))
+#     wzip.write(filename, base + '.txt')  # <6>
+
+shutil.make_archive("myfiles",'zip', '../DATA')
+shutil.make_archive("myfiles",'gztar', '../DATA')
+shutil.make_archive("myfiles",'tar', '../DATA')

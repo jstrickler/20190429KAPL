@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import smtplib  # <1>
+from getpass import getpass
 
 DEBUG = True  # set to false for production
 
@@ -11,6 +12,8 @@ msg = '''Subject: SMTP example
 Hello hello?
 Testing email from Python
 '''
+
+# pythonclass/Gr3@t$tud3nt
 
 smtp_pwd = getpass("Enter SMTP server password:")
 
